@@ -1,0 +1,12 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php [QSA,L]
+
+RewriteCond %{REQUEST_URI} !^/assets
+
+# Rewrite any assets file
+RewriteRule ([^/]*).(css|js|png|jpe?g)$ assets/$1.$2 [L]
